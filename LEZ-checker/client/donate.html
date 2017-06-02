@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+	<meta charset="utf-8">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
+	<link href="style.css" rel="stylesheet">
+
+	<script src="code.js"></script>
+	<title>LEZ-checker - Donate</title>
+
+</head>
+
+<body ng-app="webApp" style="height: 100%;">
+	<div class="container-fluid" style="height: 100%;">
+	<div class="row" style="position: relative;">
+		<div class="col-sm-3">
+
+		</div>
+		<div class="col-sm-6" style="border: 2px solid grey; border-radius: 5px; position: absolute; display: inline-block; top: 50%; transform: translateY(+50%);" ng-controller="donationController">
+			<h1>Donations</h1>
+			<br>
+			<form>
+				<div class="row">
+					<div class="col-sm-9">
+						<div class="form-group">
+							<label for="cardNumber">Kaartnummer:</label>
+							<input type="number" class="form-control" ng-model="cardNumber" id="cardNumber">
+						</div>
+					</div>
+					<div class="col-sm-3">
+						<div class="form-group">
+							<label for="cvc">CVC:</label>
+							<input type="number" class="form-control" ng-model="cardCVC" id="cvc">
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-12">
+						<label>Expiration date:</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-2">
+						<div class="form-group">
+							<label for="cardMonth">Month: MM</label>
+							<input type="number" class="form-control" ng-model="cardMonth" id="cardMonth">
+						</div>
+					</div>
+					<div class="col-sm-2">
+						<div class="form-group">
+							<label for="cardYear">Year: YYYY</label>
+							<input type="number" class="form-control" ng-model="cardYear" id="cardYear">
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-12">
+						<label>
+  								<input type="radio" ng-model="plan" value="d2">
+  								Donate €2
+							</label>
+						<br/>
+						<label>
+								<input type="radio" ng-model="plan" ng-value="d5">
+								Donate €5
+							</label>
+						<br/>
+						<label>
+								<input type="radio" ng-model="plan" value="d10">
+								Donate €10
+							</label>
+						<br/>
+					</div>
+				</div>
+				<br>
+				<button type="submit" class="btn btn-default" ng-click="donate()">Submit</button>
+			</form>
+			<br>
+		</div>
+		<div class="col-sm-3">
+
+		</div>
+	</div>
+</div>
+</body>
+
+</html>

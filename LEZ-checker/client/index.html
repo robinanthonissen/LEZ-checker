@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+	<meta charset="utf-8">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
+	<link href="style.css" rel="stylesheet">
+
+	<script src="code.js"></script>
+	<title>LEZ-checker</title>
+
+</head>
+
+<body ng-app="webApp" style="height: 100%;">
+
+	<div id="wrapper" style="height: 100%;" ng-controller="mainController">
+
+		<!-- Sidebar -->
+		<div id="sidebar-wrapper" ng-controller="fbController">
+			<div class="container-fluid">
+				<!--<br>
+				<button ng-click="login()">Log in</button>
+				<br>
+				<h3>{{name}}</h3>-->
+				<ul class="sidebar-nav">
+					<li class="sidebar-brand">
+						<a href="#">
+                        LEZ-checker
+                    </a>
+					</li>
+					<li>
+						<a href="donate.html">Donate</a>
+					</li>
+					<!--<li>
+						<a href="#">My Locations</a>
+					</li>
+					<li>
+						<a href="#">Overview</a>
+					</li>
+					<li>
+						<a href="#">Events</a>
+					</li>
+					<li>
+						<a href="#">About</a>
+					</li>
+					<li>
+						<a href="#">Services</a>
+					</li>
+					<li>
+						<a href="#">Contact</a>
+					</li>-->
+				</ul>
+				<div id="fbWindow">
+					<br>
+					<h3>{{name}}</h3>
+					<br>
+
+					<div class="clickable">
+						<a ng-click="login()">
+							<img src="fb_login_default.png" ng-click="login()" width="90%" height="auto" style="text-aligment: center;">
+
+						</a>
+					</div>
+					<!--<button ng-click="login()">Log in</button>-->
+					<br>
+				</div>
+			</div>
+		</div>
+		<!-- /#sidebar-wrapper -->
+		<a href="#menu-toggle" id="menu-toggle">
+			<div id="menuButton" style="height: 60px; width: 60px;">
+				<img src="arrow.png" height="100%" width="auto" id="arrow">
+			</div>
+		</a>
+
+		<!-- Page Content -->
+		<div id="page-content-wrapper" style="height: 100%;">
+
+			<div class="container-fluid" style="height: 100%;">
+				<div class="row">
+					<div class="col-sm-12">
+						<div>
+							<h1>Lage EmissieZone Checker</h1>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-10" id="infoDiv">
+						<h3>Controleer of uw bestemming in de lage emissiezone ligt:</h3>
+						<label>Straat en huisnummer: </label><input type="text" ng-model="straatNr">
+						<label>Gemeente: </label><input type="text" ng-model="gemeente">
+						<input type="button" value="Check" ng-click="checkAdres()">
+						<h4>{{resultZone}}</h4>
+						<br>
+					</div>
+					<div class="col-sm-2" ng-style="{ 'height' : height}">
+						<div id="imgWrap" ng-show="checked" style="height: 100%;">
+							<img ng-src="{{imgSrc}}" style="height: 100%; width: auto; float: right;">
+						</div>
+					</div>
+				</div>
+				<div class="row" style="height: 70%;">
+					<div class="col-sm-12" style="height: 100%;">
+						<div id="map" style="height: 100%;" elem-ready="initMap()"></div>
+						<!--<a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>-->
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<!-- /#page-content-wrapper -->
+
+	</div>
+	<!-- /#wrapper -->
+
+	<!-- Menu Toggle Script -->
+	<script>
+		$("#menu-toggle").click(function(e) {
+			e.preventDefault();
+			$("#wrapper").toggleClass("toggled");
+			if ($("#menu-toggle").attr('flipped'))
+				$(this).removeAttr('flipped');
+			else $("menu-toggle").attr('flipped', 'flipped');
+			/*if ($('arrow').hasClass('mirror')) {
+				$('arrow').removeClass('mirror');
+			} else {
+				$('arrow').addClass('mirror');
+			}*/
+		});
+
+	</script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA0YYkDNzuniAB97-sADQ-C06JbMT4QgtQ&libraries=geometry&callback=initMap" async defer></script>
+</body>
+
+</html>
